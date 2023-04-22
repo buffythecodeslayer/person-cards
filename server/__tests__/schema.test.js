@@ -37,13 +37,14 @@ const query = gql`
 `;
 
 describe('people resolver', () => {
+    const server = new ApolloServer({
+        typeDefs,
+        resolvers,
+    });
+
     test('returns people data', async () => {
         const starwarsApi = new StarWarsApi();
         starwarsApi.get = jest.fn(() => mockResponse);
-        const server = new ApolloServer({
-            typeDefs,
-            resolvers,
-        });
         
         const res = await server.executeOperation(
             { query },
@@ -56,5 +57,23 @@ describe('people resolver', () => {
 
         expect(res.body.singleResult.data.people).not.toBeNull();
         expect(res.body.singleResult.data.people).toEqual(mockResponse);
-    })
-})
+    });
+
+    test('should throw an error if the swapi request fails', async () => {
+        const starwarsApi = new StarWarsApi();
+        starwarsApi.get = jest.fn(() => {
+            throw new Error('Failed to get people data');
+        });
+
+        const res = await server.executeOperation(
+            { query },
+            { 
+                contextValue: {
+                    dataSources: { starwarsApi }
+                }
+            },
+        );
+
+        expect(res.body.singleResult.errors).toBeDefined();
+    });
+});
