@@ -11,8 +11,8 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   dataSources: () => ({
-    starwarsApi: new StarWarsApi()
-  })
+    starwarsApi: new StarWarsApi(),
+  }),
 });
 
 const { url } = await startStandaloneServer(server, {

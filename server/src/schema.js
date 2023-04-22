@@ -15,7 +15,6 @@ export const typeDefs = gql`
   type People {
     count: Int
     next: String
-    previous: String
     results: [Person]
   }
 
