@@ -59,6 +59,12 @@ describe('people resolver', () => {
         });
         const res = await server.executeOperation({ query }, { contextValue },);
 
+        /**
+         * Note that when testing, any errors in parsing, validating, and executing your GraphQL
+         * operation are returned in the nested errors field of the result. As with any GraphQL
+         * response, these errors are not thrown.
+         * https://www.apollographql.com/docs/apollo-server/testing/testing/#executing-queries-and-mutations
+         */
         expect(res.body.singleResult.errors).toBeDefined();
     });
 });
