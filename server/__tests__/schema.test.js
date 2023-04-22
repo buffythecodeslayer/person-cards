@@ -1,5 +1,6 @@
 /**
- * Tests the people resolver.
+ * Integrations tests for the people resolver. HTTP Responses are mocked so we
+ * don't actually send HTTP Requests.
  */
 import { ApolloServer } from '@apollo/server';
 import gql from 'graphql-tag';

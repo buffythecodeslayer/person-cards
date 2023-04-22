@@ -3,6 +3,8 @@
  */
 import gql from 'graphql-tag';
 
+// There are many more properties available, but we are intentionally not including
+// any that are not immediately required.
 export const typeDefs = gql`
   type Person {
     name: String
