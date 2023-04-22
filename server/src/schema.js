@@ -1,9 +1,9 @@
 /**
  * TypeDefs and Resolvers for Star Wars API data.
  */
-import wretch from 'wretch';
+import gql from 'graphql-tag';
 
-export const typeDefs = `#graphql
+export const typeDefs = gql`
   type Person {
     name: String
     height: String
@@ -20,7 +20,7 @@ export const typeDefs = `#graphql
   }
 
   type Query {
-    people(page: Int = 1): People
+    people(page: Int): People
   }
 `;
 
@@ -33,15 +33,9 @@ export const typeDefs = `#graphql
  * https://www.apollographql.com/docs/apollo-server/data/resolvers/#default-resolvers
  */
 export const resolvers = {
-    Query: {
-      async people(parent, { page }) {
-        const data = await wretch(`https://swapi.dev/api/people/?page=${page}`)
-          .get()
-          .json()
-          .catch(error => {
-              throw new Error('Failed to get people data');
-          });
-        return data;
-      },
+  Query: {
+    async people(_, { page }, { dataSources }) {
+      return await dataSources.starwarsApi.getPeople(page);
     },
-  };
+  },
+};

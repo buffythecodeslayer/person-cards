@@ -1,20 +1,23 @@
 {
-  "type": "module",
-  "dependencies": {
-    "@apollo/server": "^4.6.0",
-    "graphql": "^16.6.0",
-    "wretch": "^2.5.2"
-  },
   "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/server.js"
-  },
-  "keywords": [],
   "author": "Dan Huynh",
   "license": "ISC",
-  "description": "GraphQL wrapper for Star Wars API."
+  "description": "GraphQL wrapper for Star Wars API.",
+  "main": "server.js",
+  "type": "module",
+  "dependencies": {
+    "@apollo/datasource-rest": "^5.0.2",
+    "@apollo/server": "^4.6.0",
+    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  },
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "start": "node ./src/server.js"
+  },
+  "keywords": []
 }
