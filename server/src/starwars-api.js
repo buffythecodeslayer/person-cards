@@ -15,7 +15,7 @@ class StarWarsApi extends RESTDataSource {
         return response;
       } catch (error) {
         console.error(error);
-        throw new Error('Failed to get people data');
+        throw new Error('Starwars-Api: Failed to get people data');
       }
     }
 }

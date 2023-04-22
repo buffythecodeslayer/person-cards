@@ -41,38 +41,22 @@ describe('people resolver', () => {
         typeDefs,
         resolvers,
     });
+    const starwarsApi = new StarWarsApi();
+    const contextValue = { dataSources: { starwarsApi } };
 
     test('returns people data', async () => {
-        const starwarsApi = new StarWarsApi();
         starwarsApi.get = jest.fn(() => mockResponse);
-        
-        const res = await server.executeOperation(
-            { query },
-            { 
-                contextValue: {
-                    dataSources: { starwarsApi }
-                }
-            },
-        );
+        const res = await server.executeOperation({ query }, { contextValue },);
 
-        expect(res.body.singleResult.data.people).not.toBeNull();
+        expect(res.body.singleResult.data.people).toBeDefined();
         expect(res.body.singleResult.data.people).toEqual(mockResponse);
     });
 
-    test('should throw an error if the swapi request fails', async () => {
-        const starwarsApi = new StarWarsApi();
+    test('should throw an error if the Starwars Api request fails', async () => {
         starwarsApi.get = jest.fn(() => {
-            throw new Error('Failed to get people data');
+            throw new Error('Error in HTTP Request/Response');
         });
-
-        const res = await server.executeOperation(
-            { query },
-            { 
-                contextValue: {
-                    dataSources: { starwarsApi }
-                }
-            },
-        );
+        const res = await server.executeOperation({ query }, { contextValue },);
 
         expect(res.body.singleResult.errors).toBeDefined();
     });
