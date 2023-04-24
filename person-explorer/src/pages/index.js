@@ -1,16 +1,11 @@
 import React from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import peopleReducer from '../redux/peopleSlice';
-import PeopleListConainer from '../components/people-list-container';
 
-const DEFAULT_SWAPI_GRAPHQL_URI = 'http://localhost:4000/';
-
-const client = new ApolloClient({
-    uri: DEFAULT_SWAPI_GRAPHQL_URI,
-    cache: new InMemoryCache(),
-});
+import { client } from '../api/swapi-client';
+import peopleReducer from '../components/people-list/peopleSlice';
+import PeopleListConainer from '../components/people-list/people-list-container';
 
 const store = configureStore({
     reducer: {
