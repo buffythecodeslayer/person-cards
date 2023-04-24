@@ -1,6 +1,7 @@
 import React from 'react';
 
 const PeopleList = ({
+    hasMorePages,
     isLoading,
     onClickLoadMore,
     people
@@ -10,9 +11,10 @@ const PeopleList = ({
         <ol>{people.map(person => 
             (<li key={person.name}>{person.name}</li>)
         )}</ol>
-        {isLoading
-            ? (<div>Loading...</div>)
-            : (<button onClick={onClickLoadMore}>Load More</button>)
+        {isLoading && <div>Loading...</div>}
+        {!isLoading
+            && hasMorePages
+            && (<button onClick={onClickLoadMore}>Load More</button>)
         }
     </>
 );

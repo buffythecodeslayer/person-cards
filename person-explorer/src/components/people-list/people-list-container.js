@@ -4,6 +4,7 @@ import { getPage } from './peopleSlice';
 import PeopleList from './people-list';
 
 const PeopleListContainer = () => {
+    const hasMorePages = useSelector(state => state.people.hasMorePages);
     const isLoading = useSelector(state => state.people.isLoading);
     const currentPage = useSelector(state => state.people.currentPage);
     const people = useSelector(state => state.people.results);
@@ -14,11 +15,12 @@ const PeopleListContainer = () => {
     }, []);
 
     const handleClickLoadMore = () => {
-        dispatch(getPage(currentPage));
+        hasMorePages && dispatch(getPage(currentPage));
     }
 
     return (
         <PeopleList
+            hasMorePages={hasMorePages}
             isLoading={isLoading}
             onClickLoadMore={handleClickLoadMore}
             people={people}

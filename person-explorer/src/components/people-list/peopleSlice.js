@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getPeople } from '../../api/swapi-client';
 
 const initialState = {
+  hasMorePages: true,
   isLoading: false,
   currentPage: 1,
   results: []
@@ -26,6 +27,10 @@ export const peopleSlice = createSlice({
         state.isLoading = false;
         state.currentPage += 1;
         state.results.push(...action.payload.data.people.results);
+
+        state.hasMorePages = action.payload.data.people.next
+          ? true
+          : false;
       });
   }
 });
