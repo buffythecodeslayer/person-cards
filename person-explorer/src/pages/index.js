@@ -5,7 +5,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { client } from '../api/swapi-client';
 import peopleReducer from '../components/people-list/peopleSlice';
-import PeopleListConainer from '../components/people-list/people-list-container';
+import PeopleListContainer from '../components/people-list/people-list-container';
 
 const store = configureStore({
     reducer: {
@@ -13,15 +13,15 @@ const store = configureStore({
     }
 })
 
-const HomePage = () => {
+const App = () => {
     return (
         <ApolloProvider client={client}>
             <Provider store={store}>
                 <div>Welcome to Next.js with React, ApolloClient and Redux!</div>
-                <PeopleListConainer />
+                <PeopleListContainer />
             </Provider>
         </ApolloProvider>
     );
 };
 
-export default HomePage;
+export default App;

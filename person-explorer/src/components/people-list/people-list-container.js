@@ -4,6 +4,7 @@ import { getPage } from './peopleSlice';
 import PeopleList from './people-list';
 
 const PeopleListContainer = () => {
+    const isLoading = useSelector(state => state.people.isLoading);
     const currentPage = useSelector(state => state.people.currentPage);
     const people = useSelector(state => state.people.results);
 
@@ -16,11 +17,13 @@ const PeopleListContainer = () => {
         dispatch(getPage(currentPage));
     }
 
-    return (<>
-        <h1>CurrentPage</h1>
-        <PeopleList people={people}/>
-        <button onClick={(handleClickLoadMore)}>Load More</button>
-    </>);
+    return (
+        <PeopleList
+            isLoading={isLoading}
+            onClickLoadMore={handleClickLoadMore}
+            people={people}
+        />
+    );
 };
 
 export default PeopleListContainer;

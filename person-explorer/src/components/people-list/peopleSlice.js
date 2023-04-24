@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getPeople } from '../../api/swapi-client';
 
 const initialState = {
+  isLoading: false,
   currentPage: 1,
   results: []
 }
@@ -18,7 +19,11 @@ export const peopleSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(getPage.pending, (state) => {
+        state.isLoading = true;
+      })
       .addCase(getPage.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.currentPage += 1;
         state.results.push(...action.payload.data.people.results);
       });
