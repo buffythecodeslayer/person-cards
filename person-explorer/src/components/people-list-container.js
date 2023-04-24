@@ -3,12 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getPage } from '../redux/peopleSlice';
 import PeopleList from './people-list';
 
-const PeopleListConainer = () => {
-    const currentPage = useSelector(state => state.currentPage);
+const PeopleListContainer = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log('useEffect');
         dispatch(getPage());
     }, []);
 
@@ -22,4 +20,4 @@ const PeopleListConainer = () => {
     </>);
 };
 
-export default PeopleListConainer;
+export default PeopleListContainer;
