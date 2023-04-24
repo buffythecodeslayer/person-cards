@@ -1,5 +1,7 @@
+/**
+ * Tests the PeopleList component. 
+ */
 import { render } from '@testing-library/react'
-import { jest } from '@jest/globals'
 
 import PeopleList from '../../src/components/people-list/people-list'
 

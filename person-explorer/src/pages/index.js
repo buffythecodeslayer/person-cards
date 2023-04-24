@@ -1,3 +1,6 @@
+/**
+ * Entry point for the App.
+ */
 import React from 'react';
 import { ApolloProvider } from '@apollo/client';
 import { Provider } from 'react-redux';
@@ -17,7 +20,6 @@ const App = () => {
     return (
         <ApolloProvider client={client}>
             <Provider store={store}>
-                <div>Welcome to Next.js with React, ApolloClient and Redux!</div>
                 <PeopleListContainer />
             </Provider>
         </ApolloProvider>

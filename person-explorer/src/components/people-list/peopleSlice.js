@@ -1,3 +1,6 @@
+/**
+ * Reducers for people state.
+ */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getPeople } from '../../api/swapi-client';
 
@@ -13,11 +16,6 @@ export const getPage = createAsyncThunk('get-people', getPeople);
 export const peopleSlice = createSlice({
   name: 'people',
   initialState,
-  reducers: {
-    incrementPage: state => {
-        state.currentPage += 1;
-    }
-  },
   extraReducers: (builder) => {
     builder
       .addCase(getPage.pending, (state) => {
@@ -34,7 +32,5 @@ export const peopleSlice = createSlice({
       });
   }
 });
-
-export const { incrementPage } = peopleSlice.actions;
 
 export default peopleSlice.reducer;

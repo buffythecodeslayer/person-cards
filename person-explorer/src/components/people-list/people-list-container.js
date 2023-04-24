@@ -1,3 +1,7 @@
+/**
+ * A container for PeopleList. Includes logic for fetching people and
+ * displaying loading state.
+ */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPage } from './peopleSlice';
