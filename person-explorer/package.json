@@ -2,7 +2,7 @@
   "name": "person-explorer",
   "version": "1.0.0",
   "description": "",
-  "main": "pages/index.js",
+  "main": "src/pages/index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,9 +14,11 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/client": "^3.7.12",
+    "@reduxjs/toolkit": "^1.9.5",
     "graphql": "^16.6.0",
     "next": "^13.3.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5"
   }
 }
