@@ -11,7 +11,7 @@ import StarWarsApi from '../src/starwars-api.js';
 
 const mockResponse = {
     count: 1,
-    next: null,
+    hasNextPage: false,
     results: [{
         name: 'Luke Skywalker',
         height: '172',
@@ -22,7 +22,8 @@ const mockResponse = {
 ]};
 
 const mockPeopleResponse = {
-    ...mockResponse,
+    count: 1,
+    next: null,
     results: [{
         name: 'Luke Skywalker',
         height: '172',
@@ -40,7 +41,7 @@ const query = gql`
     query GetPeople ($page: Int!) {
         people (page: $page) {
             count
-            next
+            hasNextPage
             results {
                 name
                 height

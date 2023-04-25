@@ -16,7 +16,7 @@ export const typeDefs = gql`
 
   type People {
     count: Int
-    next: String
+    hasNextPage: Boolean
     results: [Person]
   }
 
@@ -36,7 +36,11 @@ export const typeDefs = gql`
 export const resolvers = {
   Query: {
     async people(_, { page }, { dataSources }) {
-      return await dataSources.starwarsApi.getPeople(page);
+      const people = await dataSources.starwarsApi.getPeople(page);
+      return {
+        ...people,
+        hasNextPage: people.next ? true : false
+      }
     },
   },
   Person: {
