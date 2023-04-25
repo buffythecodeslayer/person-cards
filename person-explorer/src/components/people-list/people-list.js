@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PersonCard from '../person-card/person-card';
+import styles from './people-list.module.css';
 
 const PeopleList = ({
     hasMorePages,
@@ -8,19 +9,19 @@ const PeopleList = ({
     onClickLoadMore,
     people
 }) => (
-    <>
+    <div className={styles.peopleList}>
         <h1>Star Wars</h1>
-        <ol>{people.map(person => 
-            (<li key={person.name}>
-                <PersonCard person={person}/>
+        <ul className={styles.cards}>{people.map(person => 
+            (<li className={styles.card} key={person.name}>
+                <PersonCard person={person} />
             </li>)
-        )}</ol>
-        {isLoading && <div>Loading...</div>}
+        )}</ul>
+        {isLoading && <p>Loading...</p>}
         {!isLoading
             && hasMorePages
             && (<button onClick={onClickLoadMore}>Load More</button>)
         }
-    </>
+    </div>
 );
 
 export default PeopleList;
