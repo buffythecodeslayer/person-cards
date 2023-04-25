@@ -18,6 +18,20 @@ class StarWarsApi extends RESTDataSource {
         throw new Error('Starwars-Api: Failed to get people data');
       }
     }
+
+    async getHomeworld(planetId) {
+      if (!planetId) {
+        throw new Error('Starwars-Api: planetId is required to get homeworld');
+      }
+
+      try {
+        const response = await this.get(`planets/${planetId}`);
+        return response;
+      } catch (error) {
+        console.error(error);
+        throw new Error('Starwars-Api: Failed to get homeworld data');
+      }
+    }
 }
 
 export default StarWarsApi;
