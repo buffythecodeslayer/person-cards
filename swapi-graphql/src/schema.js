@@ -21,7 +21,7 @@ export const typeDefs = gql`
   }
 
   type Query {
-    people(page: Int): People
+    people(page: Int!): People
   }
 `;
 

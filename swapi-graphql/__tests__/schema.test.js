@@ -22,8 +22,8 @@ const mockResponse = {
 ]};
 
 const query = gql`
-    query {
-        people {
+    query GetPeople ($page: Int!) {
+        people (page: $page) {
             count
             next
             results {
@@ -37,6 +37,10 @@ const query = gql`
     }
 `;
 
+const variables = {
+    page: 1,
+}
+
 describe('people resolver', () => {
     const server = new ApolloServer({
         typeDefs,
@@ -47,7 +51,10 @@ describe('people resolver', () => {
 
     test('returns people data', async () => {
         starwarsApi.get = jest.fn(() => mockResponse);
-        const res = await server.executeOperation({ query }, { contextValue },);
+        const res = await server.executeOperation(
+            { query, variables },
+            { contextValue },
+        );
 
         expect(res.body.singleResult.data.people).toBeDefined();
         expect(res.body.singleResult.data.people).toEqual(mockResponse);
@@ -57,7 +64,10 @@ describe('people resolver', () => {
         starwarsApi.get = jest.fn(() => {
             throw new Error('Error in HTTP Request/Response');
         });
-        const res = await server.executeOperation({ query }, { contextValue },);
+        const res = await server.executeOperation(
+            { query, variables },
+            { contextValue },
+        );
 
         /**
          * Note that when testing, any errors in parsing, validating, and executing your GraphQL
