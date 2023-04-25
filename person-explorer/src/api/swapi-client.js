@@ -11,13 +11,13 @@ const query = gql`
     query GetPeople($page: Int!) {
         people (page: $page) {
             count
-            next
+            hasNextPage
             results {
                 name
                 height
                 mass
                 birth_year
-                homeworld
+                origin
             }
         }
     }
