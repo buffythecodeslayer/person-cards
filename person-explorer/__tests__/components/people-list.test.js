@@ -10,11 +10,11 @@ const props = {
     isLoading: false,
     currentPage: 1,
     people: [{
-            name: "Luke Skywalker",
-            height: "172",
-            mass: "77",
-            birth_year: "19BBY",
-            homeworld: "https://swapi.dev/api/planets/1/",
+            name: 'Luke Skywalker',
+            height: '172',
+            mass: '77',
+            birth_year: '19BBY',
+            origin: 'Tatooine',
         },
     ]
 }
@@ -29,6 +29,10 @@ const IS_LOADING = {
     isLoading: true
 };
 
+const ROLE_BUTTON = 'button';
+const LOADING_MESSAGE = 'Loading...';
+const LOAD_MORE_MESSAGE = 'Load More';
+
 
 describe('PeopleList', () => {
     test('renders people data and asks to load more', () => {
@@ -37,8 +41,13 @@ describe('PeopleList', () => {
         )
 
         expect(queryByText('Luke Skywalker')).toBeTruthy();
-        expect(queryByText('Loading...')).toBeFalsy();
-        expect(queryByRole('button', { name: 'Load More' })).toBeTruthy();
+        expect(queryByText('172')).toBeTruthy();
+        expect(queryByText('77')).toBeTruthy();
+        expect(queryByText('19BBY')).toBeTruthy();
+        expect(queryByText('Tatooine')).toBeTruthy();
+
+        expect(queryByText(LOADING_MESSAGE)).toBeFalsy();
+        expect(queryByRole(ROLE_BUTTON, { name: LOAD_MORE_MESSAGE })).toBeTruthy();
     });
     test('does not ask to load more', () => {
         const { queryByRole, queryByText } = render(
@@ -46,8 +55,8 @@ describe('PeopleList', () => {
         )
 
         expect(queryByText('Luke Skywalker')).toBeTruthy();
-        expect(queryByText('Loading...')).toBeFalsy();
-        expect(queryByRole('button', { name: 'Load More' })).toBeFalsy();
+        expect(queryByText(LOADING_MESSAGE)).toBeFalsy();
+        expect(queryByRole(ROLE_BUTTON, { name: LOAD_MORE_MESSAGE })).toBeFalsy();
     });
     test('shows loading', () => {
         const { queryByRole, queryByText } = render(
@@ -55,7 +64,7 @@ describe('PeopleList', () => {
         )
 
         expect(queryByText('Luke Skywalker')).toBeTruthy();
-        expect(queryByText('Loading...')).toBeTruthy();
-        expect(queryByRole('button', { name: 'Load More' })).toBeFalsy();
+        expect(queryByText(LOADING_MESSAGE)).toBeTruthy();
+        expect(queryByRole(ROLE_BUTTON, { name: LOAD_MORE_MESSAGE })).toBeFalsy();
     });
 });
