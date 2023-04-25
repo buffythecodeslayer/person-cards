@@ -24,11 +24,8 @@ export const peopleSlice = createSlice({
       .addCase(getPage.fulfilled, (state, action) => {
         state.isLoading = false;
         state.currentPage += 1;
+        state.hasMorePages = action.payload.data.people.hasNextPage;
         state.results.push(...action.payload.data.people.results);
-
-        state.hasMorePages = action.payload.data.people.next
-          ? true
-          : false;
       });
   }
 });
