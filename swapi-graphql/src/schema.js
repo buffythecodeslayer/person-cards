@@ -11,7 +11,7 @@ export const typeDefs = gql`
     height: String
     mass: String
     birth_year: String
-    homeworld: String
+    origin: String
   }
 
   type People {
@@ -37,6 +37,13 @@ export const resolvers = {
   Query: {
     async people(_, { page }, { dataSources }) {
       return await dataSources.starwarsApi.getPeople(page);
+    },
+  },
+  Person: {
+    async origin(person, _, { dataSources }) {
+      const planetId = person.homeworld.split('/').at(-2);
+      const homeworld = await dataSources.starwarsApi.getHomeworld(planetId);
+      return homeworld.name;
     },
   },
 };
