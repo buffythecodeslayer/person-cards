@@ -4,8 +4,10 @@
  */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { getPage } from './peopleSlice';
 import PeopleList from './people-list';
+import styles from './people-list-container.module.css';
 
 const PeopleListContainer = () => {
     const hasMorePages = useSelector(state => state.people.hasMorePages);
@@ -23,12 +25,14 @@ const PeopleListContainer = () => {
     }
 
     return (
-        <PeopleList
-            hasMorePages={hasMorePages}
-            isLoading={isLoading}
-            onClickLoadMore={handleClickLoadMore}
-            people={people}
-        />
+        <div className={styles.peopleListContainer}>
+            <PeopleList
+                hasMorePages={hasMorePages}
+                isLoading={isLoading}
+                onClickLoadMore={handleClickLoadMore}
+                people={people}
+            />
+        </div>
     );
 };
 

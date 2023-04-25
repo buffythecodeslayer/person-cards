@@ -16,14 +16,12 @@ const store = configureStore({
     }
 })
 
-const App = () => {
-    return (
-        <ApolloProvider client={client}>
-            <Provider store={store}>
-                <PeopleListContainer />
-            </Provider>
-        </ApolloProvider>
-    );
-};
+const App = () => (
+    <ApolloProvider client={client}>
+        <Provider store={store}>
+            <PeopleListContainer />
+        </Provider>
+    </ApolloProvider>
+);
 
 export default App;
