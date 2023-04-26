@@ -66,21 +66,18 @@ the `person-explorer` app!
 
 The implementation was split into three major phases. GraphQL Server, Functional UI, and Full UI. The [PR's](https://github.com/buffythecodeslayer/person-cards/pulls?q=is%3Apr+is%3Aclosed) are split to reflect this.
 
-- https://github.com/buffythecodeslayer/person-cards/pull/1 **GraphQL Server**
-- https://github.com/buffythecodeslayer/person-cards/pull/2 **Functional UI**
-- https://github.com/buffythecodeslayer/person-cards/pull/7 **Full UI**
+- **GraphQL Server**
+    - https://github.com/buffythecodeslayer/person-cards/pull/1 Setup working boilerplate
+    - https://github.com/buffythecodeslayer/person-cards/pull/3 Change folder name
+    - https://github.com/buffythecodeslayer/person-cards/pull/4 Delete unused folder
+    - https://github.com/buffythecodeslayer/person-cards/pull/5 Fetch homeworld
+- **Functional UI**
+    - https://github.com/buffythecodeslayer/person-cards/pull/2 Initial functional requirements
+    - https://github.com/buffythecodeslayer/person-cards/pull/6 Read origin property
+- **Full UI**
+    - https://github.com/buffythecodeslayer/person-cards/pull/7 Add styling
+    
+## Decoupled
+Although they are in the same repo, `swapi-graphql` and `person-explorer` are decoupled and can be migrated to separate repo's.
+The PR's also intentionally do not overlap.
 
-There were some other cleanup and small-change PR's as well including documentation.
-
-## Change folder name
-
-These were to change `/server` to `/swapi-graphql` which should be a less confusing name.
-- https://github.com/buffythecodeslayer/person-cards/pull/3 **Change folder name**
-- https://github.com/buffythecodeslayer/person-cards/pull/4 **Delete unused folder**
-
-## Fetch homeworld and convert to origin
-
-These were to implement a nested fetch for the `/planets` endpoint. The PR's are split between
-`swapi-graphql` and `person-explorer`.
-- https://github.com/buffythecodeslayer/person-cards/pull/5 **Fetch homeworld**
-- https://github.com/buffythecodeslayer/person-cards/pull/6 **Read origin property**
