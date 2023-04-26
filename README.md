@@ -1,12 +1,12 @@
 
 # Development
 
-The person-cards app runs on two major components - swapi-graphql and person-explorer.
+The person-cards app runs on two major components: `swapi-graphql` and `person-explorer`.
 
-swapi-graphql is a GraphQL server that exposes a GraphQL endpoint for accessing data
+`swapi-graphql` is a GraphQL server that exposes a GraphQL endpoint for accessing data
 related to Star Wars characters. The data is formatted to be used exclusively with person-explorer.
 
-person-explorer is a web application built using the Next.js framework. It uses React for the frontend and queries data from the Star Wars API GraphQL endpoint (swapi-graphql) to display information about characters from the Star Wars universe. The application is hosted on a Next.js server and can be accessed through a web browser.
+`person-explorer` is a web application built using the Next.js framework. It uses React for the frontend and queries data from the Star Wars API GraphQL endpoint (swapi-graphql) to display information about characters from the Star Wars universe. The application is hosted on a Next.js server and can be accessed through a web browser.
 
 ## 0. Requirements
 
@@ -58,4 +58,4 @@ event - compiled client and server successfully in 587 ms (183 modules)
 ### Verify
 
 At this point, navigating to http://localhost:3000 in your browser, you should see
-the person-explorer app!
+the `person-explorer` app!
