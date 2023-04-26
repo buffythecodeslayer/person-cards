@@ -82,8 +82,8 @@ The implementation was split into three major phases. GraphQL Server, Functional
 
 - **GraphQL Server**
     - https://github.com/buffythecodeslayer/person-cards/pull/1 Setup working boilerplate
-    - https://github.com/buffythecodeslayer/person-cards/pull/3 Change folder name
-    - https://github.com/buffythecodeslayer/person-cards/pull/4 Delete unused folder
+    - https://github.com/buffythecodeslayer/person-cards/pull/3 Change folder name (small PR to rename a folder)
+    - https://github.com/buffythecodeslayer/person-cards/pull/4 Delete unused folder (small PR to rename a folder)
     - https://github.com/buffythecodeslayer/person-cards/pull/5 Fetch homeworld
 - **Functional UI**
     - https://github.com/buffythecodeslayer/person-cards/pull/2 Initial functional requirements
