@@ -62,6 +62,20 @@ At this point, navigating to http://localhost:3000 in your browser, you should s
 the `person-explorer` app!
 ![image](https://user-images.githubusercontent.com/131392424/234639158-65d8aff6-0bea-457c-9038-803490710237.png)
 
+## 4. Unit tests
+
+### swapi-graphql
+
+```bash
+npm run test
+```
+
+### person-explorer
+
+```bash
+npm run test
+```
+
 # Implementation
 
 The implementation was split into three major phases. GraphQL Server, Functional UI, and Full UI. The [PR's](https://github.com/buffythecodeslayer/person-cards/pulls?q=is%3Apr+is%3Aclosed) are split to reflect this.
@@ -78,6 +92,7 @@ The implementation was split into three major phases. GraphQL Server, Functional
     - https://github.com/buffythecodeslayer/person-cards/pull/7 Add styling
     
 ## Decoupled
+
 Although they are in the same repo, `swapi-graphql` and `person-explorer` are decoupled and can be migrated to separate repo's.
 The PR's also intentionally do not overlap.
 
