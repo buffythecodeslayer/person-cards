@@ -37,6 +37,7 @@ $ npm run start
 At this point, if you navigate to http://localhost:4000/ in your browser, you should see
 an interface allowing you to run queries against the server.
 
+
 ## 3. Run person-explorer
 
 Open a new terminal. Assuming we are still in the `/swapi-graphql` directory,
@@ -59,3 +60,27 @@ event - compiled client and server successfully in 587 ms (183 modules)
 
 At this point, navigating to http://localhost:3000 in your browser, you should see
 the `person-explorer` app!
+![image](https://user-images.githubusercontent.com/131392424/234639158-65d8aff6-0bea-457c-9038-803490710237.png)
+
+# Implementation
+
+The implementation was split into three major phases. GraphQL Server, Functional UI, and Full UI. The [PR's](https://github.com/buffythecodeslayer/person-cards/pulls?q=is%3Apr+is%3Aclosed) are split to reflect this.
+
+- https://github.com/buffythecodeslayer/person-cards/pull/1 **GraphQL Server**
+- https://github.com/buffythecodeslayer/person-cards/pull/2 **Functional UI**
+- https://github.com/buffythecodeslayer/person-cards/pull/7 **Full UI**
+
+There were some other cleanup and small-change PR's as well including documentation.
+
+## Change folder name
+
+These were to change `/server` to `/swapi-graphql` which should be a less confusing name.
+- https://github.com/buffythecodeslayer/person-cards/pull/3 **Change folder name**
+- https://github.com/buffythecodeslayer/person-cards/pull/4 **Delete unused folder**
+
+## Fetch homeworld and convert to origin
+
+These were to implement a nested fetch for the `/planets` endpoint. The PR's are split between
+`swapi-graphql` and `person-explorer`.
+- https://github.com/buffythecodeslayer/person-cards/pull/5 **Fetch homeworld**
+- https://github.com/buffythecodeslayer/person-cards/pull/6 **Read origin property**
